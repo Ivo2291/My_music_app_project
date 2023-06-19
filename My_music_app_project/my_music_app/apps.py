@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class MyMusicAppConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'my_music_app'
+    name = 'My_music_app_project.my_music_app'
