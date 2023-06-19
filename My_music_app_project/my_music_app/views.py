@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'base.html')
+    return render(request, 'core/home-with-profile.html')
 
 
 def details_album_page(request, pk):
