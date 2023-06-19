@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content_page %}
 
@@ -20,7 +21,7 @@
                 <p class="price">Price: $12.80</p>
             </div>
             <div class="btn-group">
-                <a href="#">Details</a>
+                <a href="{% url 'edit album' pk=1 %}">Details</a>
             </div>
         </div>
     </div>
@@ -28,7 +29,7 @@
 
     <!-- Second Card-Box in catalog -->
     <div class="card-box">
-        <img src="/images/pinkFloyd.jpg">
+        <img src="{% static 'images/pinkFloyd.jpg' %}">
         <div>
             <div class="text-center">
                 <p class="name">Name: The Dark Side of the Moon</p>
