@@ -1,5 +1,5 @@
-from My_music_app_project.my_music_app.forms import ProfileCreateForm
-from My_music_app_project.my_music_app.models import Profile
+from My_music_app_project.my_music_app.forms import ProfileCreateForm, AlbumCreateForm
+from My_music_app_project.my_music_app.models import Profile, Album
 from django.shortcuts import render, redirect
 
 
@@ -17,19 +17,46 @@ def index(request):
     if profile is None:
         return redirect('add profile')
 
-    return render(request, 'core/home-with-profile.html')
+    context = {
+        'albums': Album.objects.all(),
+    }
+
+    return render(request, 'core/home-with-profile.html', context)
 
 
 def details_album_page(request, pk):
-    return render(request, 'albums/album-details.html')
+
+    album = Album.objects.filter(pk=pk).get()
+
+    context = {
+        'album': album
+    }
+    return render(request, 'albums/album-details.html', context)
 
 
 def add_album_page(request):
-    return render(request, 'albums/add-album.html')
+    if request.method == 'GET':
+        form = AlbumCreateForm()
+    else:
+        form = AlbumCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'albums/add-album.html', context)
 
 
 def edit_album_page(request, pk):
-    return render(request, 'albums/edit-album.html')
+    album = Album.objects.filter(pk=pk).get()
+
+    context = {
+        'album': album,
+    }
+
+    return render(request, 'albums/edit-album.html', context)
 
 
 def delete_album_page(request, pk):

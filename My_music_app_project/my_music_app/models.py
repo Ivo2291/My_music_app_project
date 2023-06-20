@@ -86,6 +86,7 @@ class Album(models.Model):
     )
 
     image_URL = models.URLField(
+        max_length=400,
         null=False,
         blank=False,
     )
@@ -97,3 +98,6 @@ class Album(models.Model):
         null=False,
         blank=False,
     )
+
+    class Meta:
+        ordering = ('pk',)
