@@ -48,7 +48,7 @@ class Album(models.Model):
     COUNTRY_MUSIC = "Country Music"
     DANCE_MUSIC = "Dance Music"
     HIP_HOP_MUSIC = "Hip Hop Music"
-    OTHERS_MUSIC = "Other"
+    OTHER_MUSIC = "Other"
 
     MUSIC = (
         (POP_MUSIC, POP_MUSIC),
@@ -57,7 +57,7 @@ class Album(models.Model):
         (COUNTRY_MUSIC, COUNTRY_MUSIC),
         (DANCE_MUSIC, DANCE_MUSIC),
         (HIP_HOP_MUSIC, HIP_HOP_MUSIC),
-        (OTHERS_MUSIC, OTHERS_MUSIC),
+        (OTHER_MUSIC, OTHER_MUSIC),
     )
 
     album_name = models.CharField(
